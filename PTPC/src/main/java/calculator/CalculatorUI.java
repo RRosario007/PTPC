@@ -2,7 +2,9 @@ package calculator;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -11,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import org.w3c.dom.Text;
 
@@ -28,7 +31,18 @@ public class CalculatorUI {
 		
 		JPanel toptextPanel = new JPanel();
 		toptextPanel.setBackground(Color.red);
+		toptextPanel.setLayout(new FlowLayout());
+		toptextPanel.setBorder(new EmptyBorder(20,20,20,20));
 		toptextPanel.setBounds(0, 0, 334, 100);
+		
+		JTextField answer = new JTextField();
+		answer.setPreferredSize(new Dimension( 300, 50 ));
+		Font font1 = new Font("SansSerif", Font.BOLD, 20);
+		answer.setFont(font1);
+		answer.setHorizontalAlignment(JTextField.RIGHT);
+		toptextPanel.add(answer);
+				
+		
 		frame.add(toptextPanel);
 		
 		JPanel numberPanel = new JPanel();
@@ -69,9 +83,26 @@ public class CalculatorUI {
 		
 		frame.add(numberPanel);
 		
+		
+		
 		JPanel operationsPanel = new JPanel();
 		operationsPanel.setBackground(Color.green);
+		operationsPanel.setLayout(new GridLayout(2,2,5,5));
 		operationsPanel.setBounds(225, 100, 109, 312);
+		
+		JButton ba,bb,bc,bd;
+		
+		ba = new JButton("+");
+		operationsPanel.add(ba);
+		bb = new JButton("-");
+		operationsPanel.add(bb);
+		bc = new JButton("*");
+		operationsPanel.add(bc);
+		bd = new JButton("/");
+		operationsPanel.add(bd);
+		
+		
+		
 		frame.add(operationsPanel);
 		
 		frame.revalidate();
