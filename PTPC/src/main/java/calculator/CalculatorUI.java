@@ -27,7 +27,7 @@ public class CalculatorUI implements ActionListener{
 	private JPanel numberPanel;
 	private JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,decimalButton, clearButton;
 	private JPanel operationsPanel;
-	private JButton plusButton,minusButton,multButton,divButton, openParen, closeParen, enterButton, emptyButton;
+	private JButton plusButton,minusButton,multButton,divButton, openParen, closeParen, enterButton, backSpace;
 	
 	
 	public CalculatorUI() {
@@ -50,7 +50,7 @@ public class CalculatorUI implements ActionListener{
 		textBoxPanel.setBorder(new EmptyBorder(20,20,20,20));
 		textBoxPanel.setBounds(0, 0, 334, 100);
 		
-		textBox = new JTextField();
+		textBox = new JTextField("0");
 		textBox.setEditable(false);
 		textBox.setPreferredSize(new Dimension( 300, 50 ));
 		Font font1 = new Font("SansSerif", Font.BOLD, 20);
@@ -119,9 +119,9 @@ public class CalculatorUI implements ActionListener{
 		enterButton = new JButton("=");
 		enterButton.addActionListener(this);
 		operationsPanel.add(enterButton);
-		emptyButton = new JButton();
-		emptyButton.addActionListener(this);
-		operationsPanel.add(emptyButton);
+		backSpace = new JButton("⌫");
+		backSpace.addActionListener(this);
+		operationsPanel.add(backSpace);
 		openParen = new JButton("(");
 		openParen.addActionListener(this);
 		operationsPanel.add(openParen);
@@ -146,7 +146,30 @@ public class CalculatorUI implements ActionListener{
 	}
 	
 	private void updateText(String equation) {
+		String tempEq = textBox.getText();
+		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
+			
+			if(!tempEq.isEmpty()) {
+				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
+					return;
+				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
+					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
+						textBox.setText(textBox.getText() + equation);
+						return;
+					}				
+					textBox.setText(tempEq.substring(0, tempEq.length()-1) + equation);
+					return;
+				}
+				
+			}
+			
+			
+		}
+		
 		textBox.setText(textBox.getText() + equation);
+			
+		
+		
 		
 	}
 	
@@ -157,6 +180,17 @@ public class CalculatorUI implements ActionListener{
 		
 		
 	}
+	
+	private void deleteOne() {
+		if(textBox.getText().isEmpty()) {
+			return;
+		}
+		textBox.setText(textBox.getText().substring(0, textBox.getText().length() -1));
+		if(textBox.getText().isEmpty()) {
+			textBox.setText("0");
+			return;
+		}
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -164,8 +198,13 @@ public class CalculatorUI implements ActionListener{
 		if(e.getSource() == enterButton) {
 			System.out.println(e.getActionCommand() +  " hi");
 		}else if(e.getSource() == clearButton) {
-			System.out.println(e.getActionCommand() + " hello");
-		}else {
+			textBox.setText("0");
+		}else if(e.getSource() == backSpace) {
+			deleteOne();
+		}else{
+			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton) && textBox.getText().equals("0")) {
+				textBox.setText("");
+			}
 			updateText(e.getActionCommand());
 		}
 		

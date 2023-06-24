@@ -107,7 +107,7 @@ public class Calculator {
 		// Solution, Solve this using recursion, and I think I'm going to divide and conquer
 		// on addition and subtraction. Also pay attention to ().
 		
-		String num = "-6*5*0";
+		String num = "-6*5*3";
 		
 		Calculator test = new Calculator();
 		
