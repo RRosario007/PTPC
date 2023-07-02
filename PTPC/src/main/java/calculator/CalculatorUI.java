@@ -147,13 +147,31 @@ public class CalculatorUI implements ActionListener{
 	
 	private void updateText(String equation) {
 		String tempEq = textBox.getText();
+		
+		if(!tempEq.isEmpty() && tempEq.charAt(tempEq.length()- 1) == '-' && (tempEq.charAt(tempEq.length()- 2) == '/' || tempEq.charAt(tempEq.length()- 2) == '*' )) {
+			if(equation.equals("-") || equation.equals("+")){
+				deleteOne();
+				return;
+			}else if(equation.equals("*") || equation.equals("/")) {
+				deleteOne();
+				deleteOne();
+				textBox.setText(textBox.getText() + equation);
+				return;
+			}
+
+		}
+		
 		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			
+			System.out.println("Test1");
 			if(!tempEq.isEmpty()) {
+				System.out.println("Test2");
 				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
+					System.out.println("Test3");
 					return;
 				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
+					System.out.println("Test4");
 					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
+						
 						textBox.setText(textBox.getText() + equation);
 						return;
 					}				
@@ -162,8 +180,19 @@ public class CalculatorUI implements ActionListener{
 				}
 				
 			}
-			
-			
+				
+		}
+		
+		
+		if(equation.equals(".")) {
+			for(int i = tempEq.length() -1; i >= 0; i--) {
+				if(tempEq.charAt(i) == '.') {
+					return;
+				}else if(tempEq.charAt(i) == '+' || tempEq.charAt(i) == '-' || tempEq.charAt(i) == '*' || tempEq.charAt(i) == '/') {
+					textBox.setText(textBox.getText() + equation);
+					return;
+				}
+			}
 		}
 		
 		textBox.setText(textBox.getText() + equation);
