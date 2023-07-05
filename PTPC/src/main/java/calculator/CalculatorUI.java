@@ -28,9 +28,10 @@ public class CalculatorUI implements ActionListener{
 	private JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,decimalButton, clearButton;
 	private JPanel operationsPanel;
 	private JButton plusButton,minusButton,multButton,divButton, openParen, closeParen, enterButton, backSpace;
-	
-	
+	private Calculator caculateEq;
+	private boolean hitEqualbutton =false;
 	public CalculatorUI() {
+		caculateEq = new Calculator();
 		mainFrame  = new JFrame();
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
@@ -99,12 +100,14 @@ public class CalculatorUI implements ActionListener{
 		decimalButton = new JButton(".");
 		decimalButton.addActionListener(this);
 		numberPanel.add(decimalButton);
-		clearButton = new JButton("CE");
-		clearButton.addActionListener(this);
+			
 		b0 = new  JButton("0");
 		b0.addActionListener(this);
 		numberPanel.add(b0);
-		numberPanel.add(clearButton);
+		enterButton = new JButton("=");
+		enterButton.addActionListener(this);
+		numberPanel.add(enterButton);
+
 		
 		
 		mainFrame.add(numberPanel);
@@ -116,9 +119,9 @@ public class CalculatorUI implements ActionListener{
 		operationsPanel.setLayout(new GridLayout(4,2,5,5));
 		operationsPanel.setBounds(225, 100, 109, 312);
 		
-		enterButton = new JButton("=");
-		enterButton.addActionListener(this);
-		operationsPanel.add(enterButton);
+		clearButton = new JButton("CE");
+		clearButton.addActionListener(this);
+		operationsPanel.add(clearButton);
 		backSpace = new JButton("⌫");
 		backSpace.addActionListener(this);
 		operationsPanel.add(backSpace);
@@ -162,14 +165,10 @@ public class CalculatorUI implements ActionListener{
 		}
 		
 		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			System.out.println("Test1");
 			if(!tempEq.isEmpty()) {
-				System.out.println("Test2");
 				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
-					System.out.println("Test3");
 					return;
 				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
-					System.out.println("Test4");
 					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
 						
 						textBox.setText(textBox.getText() + equation);
@@ -194,9 +193,16 @@ public class CalculatorUI implements ActionListener{
 				}
 			}
 		}
+		if(hitEqualbutton && !(equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
+			System.out.println("enter was hit");
+			textBox.setText("");
+			hitEqualbutton = false;
+		}
+		
 		
 		textBox.setText(textBox.getText() + equation);
 			
+		hitEqualbutton = false;
 		
 		
 		
@@ -225,15 +231,20 @@ public class CalculatorUI implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		if(e.getSource() == enterButton) {
-			System.out.println(e.getActionCommand() +  " hi");
+			Double solution = caculateEq.DivideNConquer(textBox.getText());
+			textBox.setText(solution + "");
+			hitEqualbutton = true;
 		}else if(e.getSource() == clearButton) {
+			hitEqualbutton = false;
 			textBox.setText("0");
 		}else if(e.getSource() == backSpace) {
 			deleteOne();
 		}else{
 			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton) && textBox.getText().equals("0")) {
+				System.out.println("Sup");
 				textBox.setText("");
 			}
+			
 			updateText(e.getActionCommand());
 		}
 		
