@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.NumericShaper;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,6 +31,7 @@ public class CalculatorUI implements ActionListener{
 	private JButton plusButton,minusButton,multButton,divButton, openParen, closeParen, enterButton, backSpace;
 	private Calculator caculateEq;
 	private boolean hitEqualbutton =false;
+	private int parenCount = 0;
 	public CalculatorUI() {
 		caculateEq = new Calculator();
 		mainFrame  = new JFrame();
@@ -151,6 +153,16 @@ public class CalculatorUI implements ActionListener{
 	private void updateText(String equation) {
 		String tempEq = textBox.getText();
 		
+		if(equation.equals("(")) {
+			parenCount++;
+		}
+		
+		if(equation.equals(")") && parenCount == 0){
+			return;
+		}else if(equation.equals(")") && parenCount != 0) {
+			parenCount--;
+		}
+		
 		if(!tempEq.isEmpty() && tempEq.charAt(tempEq.length()- 1) == '-' && (tempEq.charAt(tempEq.length()- 2) == '/' || tempEq.charAt(tempEq.length()- 2) == '*' )) {
 			if(equation.equals("-") || equation.equals("+")){
 				deleteOne();
@@ -208,6 +220,27 @@ public class CalculatorUI implements ActionListener{
 		
 	}
 	
+	private String fixParen(String number) {
+		if(parenCount !=0) {
+			for(int i =0; i < parenCount; i++) {
+				number += ")";
+			}
+		}
+		System.out.println(number);
+		for(int i = 1; i < number.length(); i++) {
+			if(number.charAt(i) == '(' && !(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i-1) =='(')) {			
+				number = number.substring(0, i) + "*" + number.substring(i);
+			}
+			
+			if(number.charAt(i) == ')' && i != number.length()-1 &&!(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i+1) ==')')) {
+				number = number.substring(0, i+1) + "*" + number.substring(i+1);
+			}
+		}
+		
+		
+		return number;
+	}
+	
 	public static void main(String[] args) {
 			
 		
@@ -231,17 +264,20 @@ public class CalculatorUI implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		if(e.getSource() == enterButton) {
-			Double solution = caculateEq.DivideNConquer(textBox.getText());
+			System.out.println(textBox.getText());
+			
+			Double solution = caculateEq.DivideNConquer(fixParen(textBox.getText()));
 			textBox.setText(solution + "");
 			hitEqualbutton = true;
+			parenCount=0;
 		}else if(e.getSource() == clearButton) {
+			parenCount =0;
 			hitEqualbutton = false;
 			textBox.setText("0");
 		}else if(e.getSource() == backSpace) {
 			deleteOne();
 		}else{
 			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton) && textBox.getText().equals("0")) {
-				System.out.println("Sup");
 				textBox.setText("");
 			}
 			

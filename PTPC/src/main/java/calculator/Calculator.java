@@ -21,8 +21,6 @@ public class Calculator {
 	public double DivideNConquer(String number) {
 		number = number.replaceAll(" ", "");
 		Double total = 0.0;
-		
-		
 		/**
 		 * Using PEMDAS we do parentheses first. In here we detect parentheses and solve that first.
 		 */
@@ -55,16 +53,29 @@ public class Calculator {
 			for(int i = 0; i< number.length(); i++) {
 				
 				if(number.charAt(i) == '*' || number.charAt(i) =='/') {
+					
 					for(int j = i +1 ; j < number.length(); j++ ) {
+						if(number.charAt(j) == '-' && j == i +1) {
+							System.out.println("TEST");
+							j++;
+						}
 						if(number.charAt(j) == '*' || number.charAt(j) =='/' || number.charAt(j) == '+' || number.charAt(j) =='-' || j == number.length()-1) {
 							int edge = 0;
-							if(j == number.length()-1) {
+							if(j == number.length()-1) {					
 								edge = 1;
 							}
+							int p = 0;
 							if(number.charAt(i) == '*') {
-								number = number.substring(0, index) + (Double.parseDouble(number.substring(index,i)) * Double.parseDouble(number.substring(i+1, j+edge))) + number.substring(j+edge);
+								if(index != 0) {
+
+									p = 1;
+								}
+								number = number.substring(0, index+p) + (Double.parseDouble(number.substring(index+p,i)) * Double.parseDouble(number.substring(i+1, j+edge))) + number.substring(j+edge);
 							}else if(number.charAt(i) == '/') {
-								number = number.substring(0, index) + (Double.parseDouble(number.substring(index,i)) / Double.parseDouble(number.substring(i+1, j+edge))) + number.substring(j+edge);
+								if(index != 0) {
+									p = 1;
+								}
+								number = number.substring(0, index+p) + (Double.parseDouble(number.substring(index+p,i)) / Double.parseDouble(number.substring(i+1, j+edge))) + number.substring(j+edge);
 							}
 							i = index;
 							break;
@@ -88,6 +99,7 @@ public class Calculator {
 		 * returning negative or positive number if its the last number.
 		 */
 		if((number.charAt(0) == '-' || number.charAt(0) == '+') && (!number.substring(1, number.length()).contains("-") && !number.substring(1, number.length()).contains("+"))) {		
+			
 			return Double.parseDouble(number);
 		}
 		/**
@@ -102,18 +114,18 @@ public class Calculator {
 		return total;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub	
-		// Solution, Solve this using recursion, and I think I'm going to divide and conquer
-		// on addition and subtraction. Also pay attention to ().
-		
-		String num = "-6*5*3";
-		
-		Calculator test = new Calculator();
-		
-		System.out.println(test.DivideNConquer(num));
-
-	
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub	
+//		// Solution, Solve this using recursion, and I think I'm going to divide and conquer
+//		// on addition and subtraction. Also pay attention to ().
+//		
+//		String num = "-6*5*3";
+//		
+//		Calculator test = new Calculator();
+//		
+//		System.out.println(test.DivideNConquer(num));
+//
+//	
+//	}
 
 }
