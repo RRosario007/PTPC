@@ -241,8 +241,7 @@ public class CalculatorUI implements ActionListener{
 		return number;
 	}
 	
-	public static void main(String[] args) {
-			
+	public static void main(String[] args) {			
 		
 		CalculatorUI test = new CalculatorUI();
 		
