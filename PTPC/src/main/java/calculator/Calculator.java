@@ -16,13 +16,14 @@ public class Calculator {
 	/**
 	 * 
 	 * @param number, the equation that we want to solve as a string
-	 * @return double, the solution to the equation as a double because of division so we don't loose decimals
+	 * @return double, the solution to the equation as a double so we don't loose decimals
 	 */
 	public double DivideNConquer(String number) {
 		number = number.replaceAll(" ", "");
 		Double total = 0.0;
 		/**
 		 * Using PEMDAS we do parentheses first. In here we detect parentheses and solve that first.
+		 * We use recursion on the equation inside the parenthesis until there are not more parenthesis.
 		 */
 		if(number.contains("(")) {
 			for(int i = 0; i < number.length(); i++) {
@@ -45,7 +46,8 @@ public class Calculator {
 		}
 		
 		/**
-		 * After parentheses we solve multiplication and division. In this case we multiply or divide two numbers and replace the answer on the number string.
+		 * After parentheses we solve multiplication and division. In this case we multiply or divide two numbers.
+		 * We replace the two numbers with the solution by using a substring in order to not forget any part of the equation left over.
 		 * 
 		 */
 		int index = 0;
@@ -114,18 +116,5 @@ public class Calculator {
 		return total;
 	}
 
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub	
-//		// Solution, Solve this using recursion, and I think I'm going to divide and conquer
-//		// on addition and subtraction. Also pay attention to ().
-//		
-//		String num = "-6*5*3";
-//		
-//		Calculator test = new Calculator();
-//		
-//		System.out.println(test.DivideNConquer(num));
-//
-//	
-//	}
 
 }

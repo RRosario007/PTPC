@@ -20,6 +20,14 @@ import javax.swing.border.EmptyBorder;
 
 import org.w3c.dom.Text;
 
+/**
+ * 
+ * @author ricar
+ * This is the UI for the calculator. Currently we can't use exponents, so that is something to work on. 
+ * 
+ * At the very top we declare all of the JSwing elements that we will need
+ *
+ */
 public class CalculatorUI implements ActionListener{
 	
 	private JFrame mainFrame;
@@ -32,6 +40,12 @@ public class CalculatorUI implements ActionListener{
 	private Calculator caculateEq;
 	private boolean hitEqualbutton =false;
 	private int parenCount = 0;
+	
+	
+	/**
+	 * This is the constructor
+	 * All of the elements of the calculator are initialized
+	 */
 	public CalculatorUI() {
 		caculateEq = new Calculator();
 		mainFrame  = new JFrame();
@@ -46,6 +60,10 @@ public class CalculatorUI implements ActionListener{
 		mainFrame.revalidate();
 	}
 	
+	/**
+	 * This is how the text box at the top is initialized.
+	 * Currently, one is unable to type directly into the text box
+	 */
 	private void answerBox() {
 		textBoxPanel = new JPanel();
 		textBoxPanel.setBackground(Color.red);
@@ -64,6 +82,10 @@ public class CalculatorUI implements ActionListener{
 		mainFrame.add(textBoxPanel);
 	}
 
+	/**
+	 * This is where the numbers are initialized
+	 * Action listener is added in order to detect when a button is pressed
+	 */
 	private void keypad() {
 		
 		numberPanel = new JPanel();
@@ -115,6 +137,9 @@ public class CalculatorUI implements ActionListener{
 		mainFrame.add(numberPanel);
 	}
 	
+	/**
+	 * This is where the buttons for the operations are initialized
+	 */
 	private void speacialOps() {
 		operationsPanel = new JPanel();
 		operationsPanel.setBackground(Color.green);
@@ -150,6 +175,12 @@ public class CalculatorUI implements ActionListener{
 		
 	}
 	
+	/**
+	 * 
+	 * @param equation, this is the button that is pressed as a string
+	 * Need to detect what it is and pass through certain check in order to add it to the text box.
+	 * Firstly it checks if its a parenthesis, then it checks if its operand, then it checks if its a decimal, and lastly if its just a number it adds it
+	 */
 	private void updateText(String equation) {
 		String tempEq = textBox.getText();
 		
@@ -220,6 +251,12 @@ public class CalculatorUI implements ActionListener{
 		
 	}
 	
+	/**
+	 * 
+	 * @param number, the string of the equation
+	 * In the case parenthesis weren't closed, like 2+(3-5, the closing parenthesis are added.
+	 * @return the equation with the parenthesis that where missing is returned
+	 */
 	private String fixParen(String number) {
 		if(parenCount !=0) {
 			for(int i =0; i < parenCount; i++) {
@@ -248,6 +285,9 @@ public class CalculatorUI implements ActionListener{
 		
 	}
 	
+	/**
+	 * This method deletes one character every time the delete button is hit
+	 */
 	private void deleteOne() {
 		if(textBox.getText().isEmpty()) {
 			return;
@@ -259,6 +299,9 @@ public class CalculatorUI implements ActionListener{
 		}
 	}
 
+	/**
+	 * This method we detect what button was pressed
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
