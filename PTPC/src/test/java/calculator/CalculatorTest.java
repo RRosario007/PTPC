@@ -208,5 +208,71 @@ public class CalculatorTest {
 		
 		Assert.assertEquals(expected, actual, 0.01);
 	}
-
+	
+	@Test
+	public void parenthesis() {
+		double actual = calc.DivideNConquer("1234*((5678+(9876-5432))/1596)");
+		
+		double expected = 7826.15789474;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	/**
+	 * Testing when diving by 0
+	 */
+	@Test
+	public void dividebyZero() {
+		double actual = calc.DivideNConquer("4568/0");
+		
+		double expected = Double.POSITIVE_INFINITY;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	@Test
+	public void zerodivbyZero() {
+		double actual = calc.DivideNConquer("0/0");
+		
+		double expected = Double.NaN;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	@Test 
+	public void limitPositive() {
+		double actual = calc.DivideNConquer("8.6813E200 * 2.548E120");
+		
+		double expected = Double.POSITIVE_INFINITY;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	@Test
+	public void limitNegative() {
+		double actual = calc.DivideNConquer("-8.6813E200 * 2.548E120");
+		
+		double expected = Double.NEGATIVE_INFINITY;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	@Test
+	public void bigNumber() {
+		double actual = calc.DivideNConquer("8.6813E200 * 2.548E106");
+		
+		double expected = 2.21199524E307;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
+	@Test
+	public void bigNumberNegative() {
+		double actual = calc.DivideNConquer("-8.6813E200 * 2.548E106");
+		
+		double expected = -2.21199524E307;
+		
+		Assert.assertEquals(expected, actual, 0.01);
+	}
+	
 }
