@@ -1,6 +1,10 @@
 package calculator;
 
 public class CalculatorUILogic {
+	
+	private int parenCount = 0;
+	private boolean hitEqualbutton =false;
+	private Calculator calculateEq = new Calculator();
 
 	/**
 	 * 
@@ -8,44 +12,39 @@ public class CalculatorUILogic {
 	 * Need to detect what it is and pass through certain check in order to add it to the text box.
 	 * Firstly it checks if its a parenthesis, then it checks if its operand, then it checks if its a decimal, and lastly if its just a number it adds it
 	 */
-	private void updateText(String equation) {
-		String tempEq = textBox.getText();
-		
+	public String updateText(String equation, String textBox) {
 		if(equation.equals("(")) {
 			parenCount++;
 		}
 		
 		if(equation.equals(")") && parenCount == 0){
-			return;
+			return null;
 		}else if(equation.equals(")") && parenCount != 0) {
 			parenCount--;
 		}
 		
-		if(!tempEq.isEmpty() && tempEq.charAt(tempEq.length()- 1) == '-' && (tempEq.charAt(tempEq.length()- 2) == '/' || tempEq.charAt(tempEq.length()- 2) == '*' )) {
+		if(!textBox.isEmpty() && textBox.charAt(textBox.length()- 1) == '-' && (textBox.charAt(textBox.length()- 2) == '/' || textBox.charAt(textBox.length()- 2) == '*' )) {
 			if(equation.equals("-") || equation.equals("+")){
-				deleteOne();
-				return;
+				textBox = deleteOne(textBox);
+				return null;
 			}else if(equation.equals("*") || equation.equals("/")) {
-				deleteOne();
-				deleteOne();
-				textBox.setText(textBox.getText() + equation);
-				return;
+				textBox = deleteOne(textBox);
+				textBox = deleteOne(textBox);
+				return textBox + equation;
 			}
 
 		}
 		
 		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			if(!tempEq.isEmpty()) {
-				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
-					return;
-				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
-					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
+			if(!textBox.isEmpty()) {
+				if(textBox.charAt(textBox.length() -1) == equation.charAt(0)) {
+					return null;
+				}else if(textBox.charAt(textBox.length() -1) != equation.charAt(0) && (textBox.charAt(textBox.length() -1) == '+' || textBox.charAt(textBox.length() -1) == '/' || textBox.charAt(textBox.length() -1) == '-' || textBox.charAt(textBox.length() -1) == '*')) {
+					if(equation.equals("-") && (textBox.charAt(textBox.length() -1) == '*' || textBox.charAt(textBox.length() -1) == '/')) {
 						
-						textBox.setText(textBox.getText() + equation);
-						return;
+						return textBox + equation;
 					}				
-					textBox.setText(tempEq.substring(0, tempEq.length()-1) + equation);
-					return;
+					return textBox.substring(0, textBox.length()-1) + equation;
 				}
 				
 			}
@@ -54,25 +53,24 @@ public class CalculatorUILogic {
 		
 		
 		if(equation.equals(".")) {
-			for(int i = tempEq.length() -1; i >= 0; i--) {
-				if(tempEq.charAt(i) == '.') {
-					return;
-				}else if(tempEq.charAt(i) == '+' || tempEq.charAt(i) == '-' || tempEq.charAt(i) == '*' || tempEq.charAt(i) == '/') {
-					textBox.setText(textBox.getText() + equation);
-					return;
+			for(int i = textBox.length() -1; i >= 0; i--) {
+				if(textBox.charAt(i) == '.') {
+					return null;
+				}else if(textBox.charAt(i) == '+' || textBox.charAt(i) == '-' || textBox.charAt(i) == '*' || textBox.charAt(i) == '/') {
+					
+					return textBox + equation;
 				}
 			}
 		}
 		if(hitEqualbutton && !(equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			System.out.println("enter was hit");
-			textBox.setText("");
 			hitEqualbutton = false;
+			return "" + equation;
 		}
 		
-		
-		textBox.setText(textBox.getText() + equation);
-			
 		hitEqualbutton = false;
+		
+		return textBox + equation;
+			
 		
 		
 		
@@ -84,13 +82,12 @@ public class CalculatorUILogic {
 	 * In the case parenthesis weren't closed, like 2+(3-5, the closing parenthesis are added.
 	 * @return the equation with the parenthesis that where missing is returned
 	 */
-	private String fixParen(String number) {
+	public String fixParen(String number) {
 		if(parenCount !=0) {
 			for(int i =0; i < parenCount; i++) {
 				number += ")";
 			}
 		}
-		System.out.println(number);
 		for(int i = 1; i < number.length(); i++) {
 			if(number.charAt(i) == '(' && !(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i-1) =='(')) {			
 				number = number.substring(0, i) + "*" + number.substring(i);
@@ -101,21 +98,38 @@ public class CalculatorUILogic {
 			}
 		}
 		
-		
+		parenCount = 0;
 		return number;
 	}
 	
+	public String clearText() {
+		parenCount = 0;
+		hitEqualbutton = false;
+		return "0";
+	}
+	
+	public String solvEquation(String equation) {
+		
+		hitEqualbutton = true;
+		return calculateEq.DivideNConquer(fixParen(equation)) + "";
+	}
 	/**
 	 * This method deletes one character every time the delete button is hit
 	 */
-	private void deleteOne() {
-		if(textBox.getText().isEmpty()) {
-			return;
+	public String deleteOne(String textBox) {
+		if(textBox.isEmpty()) {
+			return null;
 		}
-		textBox.setText(textBox.getText().substring(0, textBox.getText().length() -1));
-		if(textBox.getText().isEmpty()) {
-			textBox.setText("0");
-			return;
+		if(textBox.charAt(textBox.length()-1) == '(') {
+			parenCount--;
+		}else if(textBox.charAt(textBox.length()-1) == ')') {
+			parenCount++;
 		}
+		textBox = (textBox.substring(0, textBox.length() -1));
+		if(textBox.isEmpty()) {
+			textBox = "0";
+		}
+		
+		return textBox;
 	}
 }

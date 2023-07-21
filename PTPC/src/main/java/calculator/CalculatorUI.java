@@ -37,9 +37,10 @@ public class CalculatorUI implements ActionListener{
 	private JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,decimalButton, clearButton;
 	private JPanel operationsPanel;
 	private JButton plusButton,minusButton,multButton,divButton, openParen, closeParen, enterButton, backSpace;
-	private Calculator caculateEq;
-	private boolean hitEqualbutton =false;
-	private int parenCount = 0;
+//	private Calculator calculateEq;
+	private CalculatorUILogic changeText;
+//	private boolean hitEqualbutton =false;
+//	private int parenCount = 0;
 	
 	
 	/**
@@ -47,7 +48,7 @@ public class CalculatorUI implements ActionListener{
 	 * All of the elements of the calculator are initialized
 	 */
 	public CalculatorUI() {
-		caculateEq = new Calculator();
+//		calculateEq = new Calculator();
 		mainFrame  = new JFrame();
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
@@ -58,6 +59,7 @@ public class CalculatorUI implements ActionListener{
 		speacialOps();
 		mainFrame.setVisible(true);
 		mainFrame.revalidate();
+		changeText = new CalculatorUILogic();
 	}
 	
 	/**
@@ -181,75 +183,75 @@ public class CalculatorUI implements ActionListener{
 	 * Need to detect what it is and pass through certain check in order to add it to the text box.
 	 * Firstly it checks if its a parenthesis, then it checks if its operand, then it checks if its a decimal, and lastly if its just a number it adds it
 	 */
-	private void updateText(String equation) {
-		String tempEq = textBox.getText();
-		
-		if(equation.equals("(")) {
-			parenCount++;
-		}
-		
-		if(equation.equals(")") && parenCount == 0){
-			return;
-		}else if(equation.equals(")") && parenCount != 0) {
-			parenCount--;
-		}
-		
-		if(!tempEq.isEmpty() && tempEq.charAt(tempEq.length()- 1) == '-' && (tempEq.charAt(tempEq.length()- 2) == '/' || tempEq.charAt(tempEq.length()- 2) == '*' )) {
-			if(equation.equals("-") || equation.equals("+")){
-				deleteOne();
-				return;
-			}else if(equation.equals("*") || equation.equals("/")) {
-				deleteOne();
-				deleteOne();
-				textBox.setText(textBox.getText() + equation);
-				return;
-			}
-
-		}
-		
-		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			if(!tempEq.isEmpty()) {
-				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
-					return;
-				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
-					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
-						
-						textBox.setText(textBox.getText() + equation);
-						return;
-					}				
-					textBox.setText(tempEq.substring(0, tempEq.length()-1) + equation);
-					return;
-				}
-				
-			}
-				
-		}
-		
-		
-		if(equation.equals(".")) {
-			for(int i = tempEq.length() -1; i >= 0; i--) {
-				if(tempEq.charAt(i) == '.') {
-					return;
-				}else if(tempEq.charAt(i) == '+' || tempEq.charAt(i) == '-' || tempEq.charAt(i) == '*' || tempEq.charAt(i) == '/') {
-					textBox.setText(textBox.getText() + equation);
-					return;
-				}
-			}
-		}
-		if(hitEqualbutton && !(equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
-			System.out.println("enter was hit");
-			textBox.setText("");
-			hitEqualbutton = false;
-		}
-		
-		
-		textBox.setText(textBox.getText() + equation);
-			
-		hitEqualbutton = false;
-		
-		
-		
-	}
+//	private void updateText(String equation) {
+//		String tempEq = textBox.getText();
+//		
+//		if(equation.equals("(")) {
+//			parenCount++;
+//		}
+//		
+//		if(equation.equals(")") && parenCount == 0){
+//			return;
+//		}else if(equation.equals(")") && parenCount != 0) {
+//			parenCount--;
+//		}
+//		
+//		if(!tempEq.isEmpty() && tempEq.charAt(tempEq.length()- 1) == '-' && (tempEq.charAt(tempEq.length()- 2) == '/' || tempEq.charAt(tempEq.length()- 2) == '*' )) {
+//			if(equation.equals("-") || equation.equals("+")){
+//				deleteOne();
+//				return;
+//			}else if(equation.equals("*") || equation.equals("/")) {
+//				deleteOne();
+//				deleteOne();
+//				textBox.setText(textBox.getText() + equation);
+//				return;
+//			}
+//
+//		}
+//		
+//		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
+//			if(!tempEq.isEmpty()) {
+//				if(tempEq.charAt(tempEq.length() -1) == equation.charAt(0)) {
+//					return;
+//				}else if(tempEq.charAt(tempEq.length() -1) != equation.charAt(0) && (tempEq.charAt(tempEq.length() -1) == '+' || tempEq.charAt(tempEq.length() -1) == '/' || tempEq.charAt(tempEq.length() -1) == '-' || tempEq.charAt(tempEq.length() -1) == '*')) {
+//					if(equation.equals("-") && (tempEq.charAt(tempEq.length() -1) == '*' || tempEq.charAt(tempEq.length() -1) == '/')) {
+//						
+//						textBox.setText(textBox.getText() + equation);
+//						return;
+//					}				
+//					textBox.setText(tempEq.substring(0, tempEq.length()-1) + equation);
+//					return;
+//				}
+//				
+//			}
+//				
+//		}
+//		
+//		
+//		if(equation.equals(".")) {
+//			for(int i = tempEq.length() -1; i >= 0; i--) {
+//				if(tempEq.charAt(i) == '.') {
+//					return;
+//				}else if(tempEq.charAt(i) == '+' || tempEq.charAt(i) == '-' || tempEq.charAt(i) == '*' || tempEq.charAt(i) == '/') {
+//					textBox.setText(textBox.getText() + equation);
+//					return;
+//				}
+//			}
+//		}
+//		if(hitEqualbutton && !(equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
+//			System.out.println("enter was hit");
+//			textBox.setText("");
+//			hitEqualbutton = false;
+//		}
+//		
+//		
+//		textBox.setText(textBox.getText() + equation);
+//			
+//		hitEqualbutton = false;
+//		
+//		
+//		
+//	}
 	
 	/**
 	 * 
@@ -257,26 +259,26 @@ public class CalculatorUI implements ActionListener{
 	 * In the case parenthesis weren't closed, like 2+(3-5, the closing parenthesis are added.
 	 * @return the equation with the parenthesis that where missing is returned
 	 */
-	private String fixParen(String number) {
-		if(parenCount !=0) {
-			for(int i =0; i < parenCount; i++) {
-				number += ")";
-			}
-		}
-		System.out.println(number);
-		for(int i = 1; i < number.length(); i++) {
-			if(number.charAt(i) == '(' && !(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i-1) =='(')) {			
-				number = number.substring(0, i) + "*" + number.substring(i);
-			}
-			
-			if(number.charAt(i) == ')' && i != number.length()-1 &&!(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i+1) ==')')) {
-				number = number.substring(0, i+1) + "*" + number.substring(i+1);
-			}
-		}
-		
-		
-		return number;
-	}
+//	private String fixParen(String number) {
+//		if(parenCount !=0) {
+//			for(int i =0; i < parenCount; i++) {
+//				number += ")";
+//			}
+//		}
+//		System.out.println(number);
+//		for(int i = 1; i < number.length(); i++) {
+//			if(number.charAt(i) == '(' && !(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i-1) =='(')) {			
+//				number = number.substring(0, i) + "*" + number.substring(i);
+//			}
+//			
+//			if(number.charAt(i) == ')' && i != number.length()-1 &&!(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i+1) ==')')) {
+//				number = number.substring(0, i+1) + "*" + number.substring(i+1);
+//			}
+//		}
+//		
+//		
+//		return number;
+//	}
 	
 	public static void main(String[] args) {			
 		
@@ -288,42 +290,68 @@ public class CalculatorUI implements ActionListener{
 	/**
 	 * This method deletes one character every time the delete button is hit
 	 */
-	private void deleteOne() {
-		if(textBox.getText().isEmpty()) {
-			return;
-		}
-		textBox.setText(textBox.getText().substring(0, textBox.getText().length() -1));
-		if(textBox.getText().isEmpty()) {
-			textBox.setText("0");
-			return;
-		}
-	}
+//	private void deleteOne() {
+//		if(textBox.getText().isEmpty()) {
+//			return;
+//		}
+//		textBox.setText(textBox.getText().substring(0, textBox.getText().length() -1));
+//		if(textBox.getText().isEmpty()) {
+//			textBox.setText("0");
+//			return;
+//		}
+//	}
 
 	/**
 	 * This method we detect what button was pressed
 	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		String tempEq = "";
 		if(e.getSource() == enterButton) {
-			System.out.println(textBox.getText());
 			
-			Double solution = caculateEq.DivideNConquer(fixParen(textBox.getText()));
-			textBox.setText(solution + "");
-			hitEqualbutton = true;
-			parenCount=0;
+			//System.out.println(changeText.solvEquation(textBox.getText()));
+			tempEq = changeText.solvEquation(textBox.getText());
+			
+			if(tempEq != null) {
+				textBox.setText(tempEq);
+			}
+			
+			
+//			Double solution = calculateEq.DivideNConquer(fixParen(textBox.getText()));
+//			textBox.setText(solution + "");
+//			hitEqualbutton = true;
+//			parenCount=0;
 		}else if(e.getSource() == clearButton) {
-			parenCount =0;
-			hitEqualbutton = false;
-			textBox.setText("0");
+			
+			tempEq = changeText.clearText();
+			
+			if(tempEq != null) {
+				textBox.setText(tempEq);
+			}
+//			parenCount =0;
+//			hitEqualbutton = false;
+//			textBox.setText("0");
 		}else if(e.getSource() == backSpace) {
-			deleteOne();
+			tempEq = changeText.deleteOne(textBox.getText());
+			
+			if(tempEq != null) {
+				textBox.setText(tempEq);
+			}
+			//deleteOne();
 		}else{
 			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton) && textBox.getText().equals("0")) {
 				textBox.setText("");
 			}
 			
-			updateText(e.getActionCommand());
+			tempEq = changeText.updateText(e.getActionCommand(), textBox.getText());
+			
+			if(tempEq != null) {
+				textBox.setText(tempEq);
+			}
+			
+			
+			//System.out.println("TESTING ---- " + changeText.updateText(e.getActionCommand(), textBox.getText()));
+			//updateText(e.getActionCommand());
 		}
 		
 
