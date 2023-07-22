@@ -310,11 +310,8 @@ public class CalculatorUI implements ActionListener{
 		if(e.getSource() == enterButton) {
 			
 			//System.out.println(changeText.solvEquation(textBox.getText()));
-			tempEq = changeText.solvEquation(textBox.getText());
-			
-			if(tempEq != null) {
-				textBox.setText(tempEq);
-			}
+
+			textBox.setText(changeText.solvEquation(textBox.getText()));
 			
 			
 //			Double solution = calculateEq.DivideNConquer(fixParen(textBox.getText()));
@@ -323,31 +320,22 @@ public class CalculatorUI implements ActionListener{
 //			parenCount=0;
 		}else if(e.getSource() == clearButton) {
 			
-			tempEq = changeText.clearText();
-			
-			if(tempEq != null) {
-				textBox.setText(tempEq);
-			}
+			textBox.setText(changeText.clearText());
 //			parenCount =0;
 //			hitEqualbutton = false;
 //			textBox.setText("0");
 		}else if(e.getSource() == backSpace) {
-			tempEq = changeText.deleteOne(textBox.getText());
-			
-			if(tempEq != null) {
-				textBox.setText(tempEq);
-			}
+
+			textBox.setText(changeText.deleteOne(textBox.getText()));
 			//deleteOne();
 		}else{
-			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton) && textBox.getText().equals("0")) {
+			if((e.getSource() != decimalButton && e.getSource() != plusButton && e.getSource() != minusButton && e.getSource() != multButton && e.getSource() != divButton && e.getSource() != closeParen) && textBox.getText().equals("0")) {
+				System.out.println("SASD");
 				textBox.setText("");
 			}
 			
-			tempEq = changeText.updateText(e.getActionCommand(), textBox.getText());
-			
-			if(tempEq != null) {
-				textBox.setText(tempEq);
-			}
+			textBox.setText(changeText.updateText(e.getActionCommand(), textBox.getText()));
+
 			
 			
 			//System.out.println("TESTING ---- " + changeText.updateText(e.getActionCommand(), textBox.getText()));

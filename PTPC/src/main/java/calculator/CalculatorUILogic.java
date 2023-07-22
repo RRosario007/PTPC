@@ -18,7 +18,7 @@ public class CalculatorUILogic {
 		}
 		
 		if(equation.equals(")") && parenCount == 0){
-			return null;
+			return textBox;
 		}else if(equation.equals(")") && parenCount != 0) {
 			parenCount--;
 		}
@@ -26,7 +26,7 @@ public class CalculatorUILogic {
 		if(!textBox.isEmpty() && textBox.charAt(textBox.length()- 1) == '-' && (textBox.charAt(textBox.length()- 2) == '/' || textBox.charAt(textBox.length()- 2) == '*' )) {
 			if(equation.equals("-") || equation.equals("+")){
 				textBox = deleteOne(textBox);
-				return null;
+				return textBox;
 			}else if(equation.equals("*") || equation.equals("/")) {
 				textBox = deleteOne(textBox);
 				textBox = deleteOne(textBox);
@@ -37,8 +37,8 @@ public class CalculatorUILogic {
 		
 		if((equation.equals("*") || equation.equals("/") || equation.equals("-") || equation.equals("+"))) {
 			if(!textBox.isEmpty()) {
-				if(textBox.charAt(textBox.length() -1) == equation.charAt(0)) {
-					return null;
+				if(textBox.charAt(textBox.length() -1) == equation.charAt(0) || textBox.charAt(textBox.length() -1) == '.') {
+					return textBox;
 				}else if(textBox.charAt(textBox.length() -1) != equation.charAt(0) && (textBox.charAt(textBox.length() -1) == '+' || textBox.charAt(textBox.length() -1) == '/' || textBox.charAt(textBox.length() -1) == '-' || textBox.charAt(textBox.length() -1) == '*')) {
 					if(equation.equals("-") && (textBox.charAt(textBox.length() -1) == '*' || textBox.charAt(textBox.length() -1) == '/')) {
 						
@@ -55,7 +55,7 @@ public class CalculatorUILogic {
 		if(equation.equals(".")) {
 			for(int i = textBox.length() -1; i >= 0; i--) {
 				if(textBox.charAt(i) == '.') {
-					return null;
+					return textBox;
 				}else if(textBox.charAt(i) == '+' || textBox.charAt(i) == '-' || textBox.charAt(i) == '*' || textBox.charAt(i) == '/') {
 					
 					return textBox + equation;
@@ -93,12 +93,13 @@ public class CalculatorUILogic {
 				number = number.substring(0, i) + "*" + number.substring(i);
 			}
 			
-			if(number.charAt(i) == ')' && i != number.length()-1 &&!(number.charAt(i-1) =='+' || number.charAt(i-1) =='-' || number.charAt(i-1) =='*' || number.charAt(i-1) =='/' || number.charAt(i+1) ==')')) {
+			if(number.charAt(i) == ')' && i != number.length()-1 &&!(number.charAt(i+1) =='+' || number.charAt(i+1) =='-' || number.charAt(i+1) =='*' || number.charAt(i+1) =='/' || number.charAt(i+1) ==')')) {
 				number = number.substring(0, i+1) + "*" + number.substring(i+1);
 			}
 		}
 		
 		parenCount = 0;
+		System.out.println(number);
 		return number;
 	}
 	
@@ -118,7 +119,7 @@ public class CalculatorUILogic {
 	 */
 	public String deleteOne(String textBox) {
 		if(textBox.isEmpty()) {
-			return null;
+			return "0";
 		}
 		if(textBox.charAt(textBox.length()-1) == '(') {
 			parenCount--;
