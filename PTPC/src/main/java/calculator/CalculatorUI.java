@@ -52,6 +52,7 @@ public class CalculatorUI implements ActionListener{
 		mainFrame  = new JFrame();
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
+		mainFrame.setResizable(false);
 		mainFrame.setSize(350,450);
 		mainFrame.setLocationRelativeTo(null);
 		answerBox();

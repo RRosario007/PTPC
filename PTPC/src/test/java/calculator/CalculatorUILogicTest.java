@@ -17,38 +17,81 @@ public class CalculatorUILogicTest {
 		calcLogic = new CalculatorUILogic();
 	}
 
+	/**
+	 * Testing with entering multiple values
+	 */
 	@Test
 	public void testUpdateText() {
-		String actual = calcLogic.updateText("4", "5+1-2*4");
+		String actual = calcLogic.updateText("2", "");
+		actual = calcLogic.updateText("+", "2");
+		actual = calcLogic.updateText("(", "2+");
+		actual = calcLogic.updateText("(", "2+(");
+		actual = calcLogic.updateText("(", "2+((");
+		actual = calcLogic.updateText("8", "2+(((");
+		actual = calcLogic.updateText("-", "2+(((8");
+		actual = calcLogic.updateText("2", "2+(((8-");
+		actual = calcLogic.updateText(")", "2+(((8-2");
+		actual = calcLogic.updateText("*", "2+(((8-2)");
+		actual = calcLogic.updateText("3", "2+(((8-2)*");
 		
-		String expected = "5+1-2*44";
+		String expected = "2+(((8-2)*3";
 				
 		Assert.assertEquals(expected, actual);
 		
 	}
 
+	/**
+	 * Testing to see if after a period an operation and period can't be added from the last string
+	 */
+	@Test
+	public void testUpdateTextPart2() {
+		String actual = calcLogic.updateText(".", "2+(((8-2)*3");
+		actual = calcLogic.updateText("+", "2+(((8-2)*3");
+		actual = calcLogic.updateText("-", "2+(((8-2)*3");
+		actual = calcLogic.updateText("/", "2+(((8-2)*3");
+		actual = calcLogic.updateText("*", "2+(((8-2)*3");
+		actual = calcLogic.updateText(".", "2+(((8-2)*3");
+		
+		String expected = "2+(((8-2)*3.";
+				
+		Assert.assertEquals(expected, actual);
+		
+	}
+	
+	/**
+	 * Here it is testing if any open parenthesis are left, then it adds the closing parenthesis needed
+	 */
 	@Test
 	public void testFixParen() {
-		String actual = calcLogic.fixParen("23+(((89-22)-2");
+		String actual = calcLogic.fixParen("2+(((8-2)*3.");
 		
-		String expected = "23+(((89-22)-2))";
+		String expected = "2+(((8-2)*3.))";
 		
 		Assert.assertEquals(expected, actual);
 	}
 
-	@Test
-	public void testSolvEquation() {
-		fail("Not yet implemented");
-	}
-
+	/**
+	 * Testing when only 1 character is deleted
+	 */
 	@Test
 	public void testDeleteOne() {
-		fail("Not yet implemented");
+		String actual = calcLogic.deleteOne("2+(((8-2)*3.");
+		
+		String expected = "2+(((8-2)*3";
+		
+		Assert.assertEquals(expected, actual);
 	}
 	
-	@After
+	/**
+	 * When clearing everything, it just returns a 0
+	 */
+	@Test
 	public void ClearText() {
-		calcLogic.clearText();
+		String actual = calcLogic.clearText();
+
+		String expected = "0";
+		
+		Assert.assertEquals(expected, actual);
 	}
 
 }
