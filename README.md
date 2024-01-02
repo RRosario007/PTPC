@@ -28,9 +28,7 @@
 
 
 ## About The Project
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+In this project, I've created multiple programs in order to practice my programming skills. The programs I've created so far are a calculator, a website, and a copy playlist program. All of my coding is not upto par with an efficien program and definitely has some mistakes, but by doing this I hope to become a pragmatic programmer. On top of that, I can look back at my code later and realize some of the mistakes I've made.
 
 
 <br />
@@ -47,9 +45,13 @@ There are many great README templates available on GitHub; however, I didn't fin
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Calculator
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+
+This is just a simple calculator program. I started coding the logic of the calculator first, then I worked on the user interface.
+Things I learned:
+* The importance of planning before starting to program
+* JSwing
+* The importance of comments for when your revisit the program and for others to understand.
 
 <br />
 <br />
@@ -112,3 +114,5 @@ There are many great README templates available on GitHub; however, I didn't fin
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Copy Playlist Program
+
+
