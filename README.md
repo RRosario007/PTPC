@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-<br />
+<br >
 <div align="center">
   <a href="">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
@@ -10,7 +10,7 @@
 
   <p align="center">
     PTPC(Project To Practice Coding)
-    <br />
+    <br >
     <a href="https://github.com/RRosario007/PTPC"><strong>Explore the docs »</strong></a>
   </p>
 </div>
@@ -31,14 +31,14 @@
 In this project, I've created multiple programs in order to practice my programming skills. The programs I've created so far are a calculator, a website, and a copy playlist program. All of my coding is not upto par with an efficien program and definitely has some mistakes, but by doing this I hope to become a pragmatic programmer. On top of that, I can look back at my code later and realize some of the mistakes I've made.
 
 
-<br />
-<br />
-<br />
+<br >
+<br >
+<br >
 
-<br />
-<br />
-<br />
-<br />
+<br >
+<br >
+<br >
+<br >
 
  
 
@@ -46,37 +46,25 @@ In this project, I've created multiple programs in order to practice my programm
 
 ## Calculator
 
-
+<p align="center">
+  <img src="Calculatorimg.png" alt="Calculator" width="180" heigth="220">
+</p>
 This is just a simple calculator program. I started coding the logic of the calculator first, then I worked on the user interface.
+<br/>
 Things I learned:
 * The importance of planning before starting to program
 * JSwing
 * The importance of comments for when your revisit the program and for others to understand.
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br >
+<br >
+<br >
+<br>
+<br >
+<br >
+<br >
+<br >
+<br >
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -86,30 +74,30 @@ Things I learned:
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
+<br >
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
