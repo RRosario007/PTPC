@@ -46,7 +46,7 @@ In this project, I've created multiple programs in order to practice my programm
 ## Calculator
 
 <p align="center">
-  <img src="Calculatorimg.png" alt="Calculator" width="180" heigth="220">
+  <img src="Calcgif.gif" alt="Calculator" width="580" heigth="20">
 </p>
 This is just a simple calculator program. I started coding the logic of the calculator first, then I worked on the user interface.
 <br/>
