@@ -34,7 +34,6 @@ In this project, I've created multiple programs in order to practice my programm
 <br >
 <br >
 <br >
-
 <br >
 <br >
 <br >
@@ -52,6 +51,7 @@ In this project, I've created multiple programs in order to practice my programm
 This is just a simple calculator program. I started coding the logic of the calculator first, then I worked on the user interface.
 <br/>
 Things I learned:
+
 * The importance of planning before starting to program
 * JSwing
 * The importance of comments for when your revisit the program and for others to understand.
@@ -64,15 +64,18 @@ Things I learned:
 <br >
 <br >
 <br >
-<br >
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Web Page
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+I created my own web page. It includes my work, how to contact me, and info about me. I got inspiration from La La Land for the color palette.
+<br>
+Things I learned:
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+* HTML & CSS
+* The importance of creating a drawing of a website first in order to have a general idea of where things are going to go
+* Picking a good color palette so that the website is something you want to look at
 
 <br >
 <br >
@@ -83,24 +86,17 @@ There are many great README templates available on GitHub; however, I didn't fin
 <br >
 <br >
 <br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
-<br >
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Copy Playlist Program
+I created a algorithm that uses web scraping in order to obtain the name and artist from a playlist on Apple Music and store it in a text file. 
+Then I used selenium in order to find the songs on Youtube and add the song to a playlist on Youtube.
+<br>
+Things I learned:
 
+* Beautiful Soup
+* Selenium
 
