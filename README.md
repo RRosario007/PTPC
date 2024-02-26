@@ -104,3 +104,6 @@ Things I learned:
 * Beautiful Soup
 * Selenium
 
+https://github.com/RRosario007/PTPC/assets/71292158/481f67fb-1803-488c-8f6a-9febd6275ed3
+
+
