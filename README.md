@@ -77,6 +77,10 @@ Things I learned:
 * The importance of creating a drawing of a website first in order to have a general idea of where things are going to go
 * Picking a good color palette so that the website is something you want to look at
 
+<p align="center">
+  <img src="WebpageScreenshot.png" alt="Webpage" width="800">
+</p>
+
 <br >
 <br >
 <br >
