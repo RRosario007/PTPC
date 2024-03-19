@@ -1,0 +1,84 @@
+.work {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.workBackgroundImg{
+    position: absolute;
+    width: 1800px;
+    height: auto;
+    filter: brightness(30%);
+    opacity: 50%;
+}
+
+.workfg{
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+}
+
+.work-bg-cover {
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+}
+
+.work-fg {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 600px;
+    width: 1015px;
+    border: solid;
+    flex-direction: column;
+}
+
+
+.calc-div{   
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.calcgif{
+    height: 225px;
+}
+
+.copy-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+} 
+.calc-div,
+.copy-div{
+    height: 250px;
+    width: 85%;
+    border: dotted;
+    border-radius: 20px;
+    border-width: 2px;
+}
+
+.copyProg{
+    width: 370px;
+    margin-right: 15px;
+}
+
+.calcText,
+.videoText{
+    color: rgb(255,255,255);
+    font-size: 28px;
+    margin-left: 50px;
+    margin-right: 20px;
+    display: flex;
+    text-align: center;
+}

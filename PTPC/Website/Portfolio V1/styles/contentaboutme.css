@@ -1,0 +1,77 @@
+.about-me{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.abtme-bgimg {
+    position: absolute;
+    width: 1800px;
+    height: auto;
+    filter: brightness(30%);
+    opacity: 50%; 
+}
+
+.abtme-fg{
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    display: flex;
+    align-items: center; 
+}
+
+.aboutme-fg {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 600px;
+    width: 1015px;
+    border: solid;
+}
+
+.aboutme-fg-images{
+    position: relative;
+    background-image: url(/images/Rick-selfie.jpg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    width: 600px;
+}
+
+<!--
+.aboutme-fgimg {
+    height: 500px;
+    position: relative;
+    top: 0;
+    left: 0;
+
+
+}
+.aboutme-fgimg2{
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s;
+}
+
+.aboutme-fgimg2:hover{
+    opacity: 1;
+    background-image: url('/images/Rick-selfie.jpg');
+    height: 500px;
+    width: 500px;
+}
+-->
+
+
+.aboutme-fgtxt {
+    color: rgb(255,255,255);
+    font-size: 28px;
+    width:  500px;
+    margin-left: 50px;
+    margin-right: 20px;
+}

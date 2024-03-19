@@ -1,0 +1,20 @@
+.mainpage {
+    padding-left: 175px;
+}
+
+@media (max-width: 1228px) {
+    .mainpage {
+        width: 1022px;
+        padding-right: 8px;
+    }
+}
+
+
+
+
+.header-name {
+    font-size: 75px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+

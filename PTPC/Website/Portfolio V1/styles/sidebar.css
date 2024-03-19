@@ -1,0 +1,190 @@
+.sidebar {
+    z-index: 1;
+    background-color: #050f1f;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width: 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-top {
+    height: 80px;
+    flex-shrink: 0;
+    
+}
+
+.sidebar-middle {
+    height: 250px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.sidebar-bottom {
+    height: 50px;
+    text-align: center;
+}
+
+.aboutmebutton{
+    padding-left: 30.5px !important;
+    padding-right: 30.5px !important;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.side{
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: #c99fa7;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border:none;
+    color: #050f1f;
+    transition: box-shadow 0.15s;
+    transition: opacity 0.15s;
+    font-family: 'Times New Roman';
+    font-size: 15px;
+    text-decoration: none;
+    
+}
+
+.side:hover {
+    box-shadow: 5px 5px 10px rgba(201, 159, 167, 0.15);
+}
+
+.side:active {
+    opacity: .6;
+    box-shadow: 5px 5px 10px rgba(201, 159, 167, 0.15);
+}
+
+
+.sidebutton {
+    height: 40px;
+    width: 125px;
+    border-radius: 15px;
+    background-color: #c99fa7;
+    font-weight: bold;
+    cursor: pointer;
+    border:none;
+    color: #050f1f;
+    transition: box-shadow 0.15s;
+    transition: opacity 0.15s;
+    font-family: 'Times New Roman';
+    font-size: 15px;
+}
+
+.sidebutton-socials{
+    height: 40px;
+    width: 125px;
+    border-radius: 15px;
+    background-color: #c99fa7;
+    font-weight: bold;
+    border:none;
+    color: #050f1f;
+    font-family: 'Times New Roman';
+    font-size: 15px;
+}
+
+.sidebutton-socials{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.mail,.GHlogo,
+.Lnin-logo {
+    height:30px;
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+}
+
+.githublinkimg {
+    border-radius: 30px;
+}
+
+.maillinkimg,
+.Lninlogoimg {
+    border-radius: 5px;
+}
+
+
+.Lninlogoimg{
+    height: 100%;
+}
+
+.githublinkimg {
+    height: 100%;
+}
+
+.maillinkimg {
+    height: 100%;
+}
+
+.githublinkimg:hover,
+.Lninlogoimg:hover,
+.maillinkimg:hover{
+    background-color: #9c4195;
+}
+
+.githublinkimg:active,
+.Lninlogoimg:active,
+.maillinkimg:active{
+    background-color: #9c4195;
+    opacity: .6;
+}
+
+.sidebutton:hover {
+    box-shadow: 5px 5px 10px rgba(201, 159, 167, 0.15);
+}
+
+.sidebutton:active {
+    opacity: .6;
+    box-shadow: 5px 5px 10px rgba(201, 159, 167, 0.15);
+}
+
+.flowerimg {
+    display: block;
+    width: 70px;
+    border-radius: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    border-style: solid;
+    border-color: #c99fa7;
+    border-width: 0.12em;
+}
+
+.name{
+    font-size: x-large;
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+    color: #a47d9a;
+}
+
+
+.linktest {
+    height: 30px;
+}
+
+.githublink {
+    height: 30px;
+}
+
+
+.maillink{
+    height: 30px;
+}
