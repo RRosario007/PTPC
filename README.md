@@ -69,7 +69,7 @@ Things I learned:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Web Page
-I created my own web page. It includes my work, how to contact me, and info about me. I got inspiration from La La Land for the color palette.
+I created my own web page. It includes my work, how to contact me, and info about me. I haven't actually put up my website on the internet yet. Down below you are able to see what it would look like. 
 <br>
 Things I learned:
 
