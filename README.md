@@ -28,7 +28,7 @@
 
 
 ## About The Project
-In this project, I've created multiple programs in order to practice my programming skills. The programs I've created so far are a calculator, a website, and a copy playlist program. All of my coding is not upto par with an efficien program and definitely has some mistakes, but by doing this I hope to become a pragmatic programmer. On top of that, I can look back at my code later and realize some of the mistakes I've made.
+In this project, I've created multiple programs in order to practice my programming skills. The programs I've created so far are a calculator, a website, and a copy playlist program. All of my coding is not up to par and definitely has some mistakes, but by doing this I hope to become a pragmatic programmer. On top of that, I can look back at my code later and realize some of the mistakes I've made.
 
 
 <br >
@@ -54,7 +54,7 @@ Things I learned:
 
 * The importance of planning before starting to program
 * JSwing
-* The importance of comments for when your revisit the program and for others to understand.
+* The importance of comments for when you revisit the program and for others to understand.
 
 <br >
 <br >
