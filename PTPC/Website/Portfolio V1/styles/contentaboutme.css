@@ -34,7 +34,7 @@
 
 .aboutme-fg-images{
     position: relative;
-    background-image: url(/images/Rick-selfie.jpg);
+    background-image: url('../images/Rick-selfie.jpg');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
